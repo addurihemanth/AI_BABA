@@ -1,0 +1,101 @@
+# ==========================================
+# AI BABA Enterprise Platform
+# Complete Backend Requirements
+# ==========================================
+
+# API Framework
+fastapi
+uvicorn[standard]
+
+# Configuration
+python-dotenv
+pydantic
+pydantic-settings
+
+# Database
+sqlalchemy
+alembic
+psycopg[binary]
+asyncpg
+
+# Authentication / Security
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt
+python-multipart
+cryptography
+
+# Validation
+email-validator
+
+# Background Jobs
+celery
+redis
+
+# AI Providers
+openai
+anthropic
+google-generativeai
+
+# AI / ML Foundation
+numpy
+pandas
+scikit-learn
+torch
+transformers
+sentence-transformers
+
+# Vector Database Support
+chromadb
+faiss-cpu
+
+# Document Processing
+pypdf
+python-docx
+openpyxl
+beautifulsoup4
+lxml
+
+# Web / API Clients
+requests
+httpx
+aiohttp
+
+# News / Content Collection
+feedparser
+newspaper3k
+
+# Image Processing
+pillow
+opencv-python
+
+# Video / Media Processing
+moviepy
+
+# Audio Processing
+pydub
+
+# Scheduling
+apscheduler
+
+# Logging / Monitoring
+loguru
+rich
+
+# Testing
+pytest
+pytest-asyncio
+
+# Code Quality
+black
+isort
+flake8
+
+# Environment / Deployment
+gunicorn
+
+# JSON / Data Utilities
+orjson
+
+# Time Handling
+python-dateutil
