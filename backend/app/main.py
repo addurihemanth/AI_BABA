@@ -18,7 +18,7 @@ app.include_router(api_router)
 
 
 @app.get("/")
-async def root():
+def root():
     return {
         "application": settings.APP_NAME,
         "version": settings.APP_VERSION,

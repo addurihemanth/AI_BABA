@@ -1,7 +1,41 @@
+"""
+AI_BABA API v1 Router
+
+Central router for API version 1.
+"""
+
+from __future__ import annotations
+
 from fastapi import APIRouter
 
+# Health
 from app.api.v1.health import router as health_router
+
+# IAM
+from app.modules.iam.api.auth import router as auth_router
+from app.modules.iam.api.role import router as role_router
+from app.modules.iam.api.permission import (
+    router as permission_router,
+)
 
 router = APIRouter()
 
-router.include_router(health_router)
+# Health
+router.include_router(
+    health_router,
+)
+
+# Authentication
+router.include_router(
+    auth_router,
+)
+
+# Role Management
+router.include_router(
+    role_router,
+)
+
+# Permission Management
+router.include_router(
+    permission_router,
+)

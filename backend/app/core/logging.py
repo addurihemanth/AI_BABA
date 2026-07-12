@@ -1,12 +1,28 @@
-from loguru import logger
+"""
+AI_BABA Logging Configuration
+"""
+
+from __future__ import annotations
+
+import logging
 import sys
 
-logger.remove()
 
-logger.add(
-    sys.stdout,
-    level="INFO",
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
-)
+def configure_logging() -> None:
 
-app_logger = logger
+    logging.basicConfig(
+        level=logging.INFO,
+        format=(
+            "%(asctime)s | "
+            "%(levelname)s | "
+            "%(name)s | "
+            "%(message)s"
+        ),
+        handlers=[
+            logging.StreamHandler(sys.stdout),
+        ],
+        force=True,
+    )
+
+
+logger = logging.getLogger("AI_BABA")
