@@ -30,13 +30,14 @@ class PermissionService:
     - Permission creation
     - Permission lookup
     - Permission validation
+    - Permission update
+    - Permission deactivation
     """
 
     def __init__(
         self,
         db: Session,
     ) -> None:
-
         self.permission_repository = PermissionRepository(db)
 
     def create_permission(
@@ -65,19 +66,17 @@ class PermissionService:
             is_system=is_system,
         )
 
-        return self.permission_repository.create(
-            permission
-        )
+        return self.permission_repository.create(permission)
 
     def get_permission_by_code(
         self,
         code: str,
     ) -> Permission:
+        """
+        Retrieve a permission by its unique code.
+        """
 
-        permission = (
-            self.permission_repository
-            .get_by_code(code)
-        )
+        permission = self.permission_repository.get_by_code(code)
 
         if permission is None:
             raise PermissionNotFoundError(
@@ -90,20 +89,65 @@ class PermissionService:
         self,
         permission: Permission,
     ) -> Permission:
+        """
+        Persist changes to an existing permission.
+        """
 
-        return (
-            self.permission_repository
-            .update(permission)
-        )
+        return self.permission_repository.update(permission)
+
+    def update_permission_by_code(
+        self,
+        *,
+        code: str,
+        resource: str | None = None,
+        action: str | None = None,
+        description: str | None = None,
+        is_active: bool | None = None,
+    ) -> Permission:
+        """
+        Update a permission by permission code.
+
+        Only supplied fields are modified.
+        """
+
+        permission = self.get_permission_by_code(code)
+
+        if resource is not None:
+            permission.resource = resource
+
+        if action is not None:
+            permission.action = action
+
+        if description is not None:
+            permission.description = description
+
+        if is_active is not None:
+            permission.is_active = is_active
+
+        return self.permission_repository.update(permission)
 
     def deactivate_permission(
         self,
         permission: Permission,
     ) -> Permission:
+        """
+        Soft deactivate a permission.
+        """
 
         permission.is_active = False
 
-        return (
-            self.permission_repository
-            .update(permission)
-        )
+        return self.permission_repository.update(permission)
+
+    def deactivate_permission_by_code(
+        self,
+        code: str,
+    ) -> Permission:
+        """
+        Soft deactivate a permission using its code.
+        """
+
+        permission = self.get_permission_by_code(code)
+
+        permission.is_active = False
+
+        return self.permission_repository.update(permission)

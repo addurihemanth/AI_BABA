@@ -1,25 +1,23 @@
 """
-AI_BABA ORM Model Registry
+AI_BABA Database Models Registry
 
-Import every ORM model here so SQLAlchemy registers them
-with Base.metadata.
+Loads all SQLAlchemy models for migrations.
 """
 
-# IAM
 from app.modules.iam.models.user import User
 from app.modules.iam.models.role import Role
 from app.modules.iam.models.permission import Permission
-from app.modules.iam.models.user_role import UserRole
 from app.modules.iam.models.role_permission import RolePermission
+from app.modules.iam.models.user_role import UserRole
 
-# Audit
 from app.modules.audit.models.audit_log import AuditLog
+
 
 __all__ = [
     "User",
     "Role",
     "Permission",
-    "UserRole",
     "RolePermission",
+    "UserRole",
     "AuditLog",
 ]

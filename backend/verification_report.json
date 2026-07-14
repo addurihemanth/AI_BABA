@@ -1,0 +1,127 @@
+{
+    "project": "AI_BABA",
+    "timestamp": "2026-07-14T14:01:38.345272",
+    "summary": {
+        "success": true,
+        "total_checks": 7,
+        "passed": 7,
+        "failed": 0
+    },
+    "analysis": [
+        {
+            "name": "Project Structure",
+            "success": true,
+            "message": "Project structure validated",
+            "details": []
+        },
+        {
+            "name": "Python Syntax",
+            "success": true,
+            "message": "141 Python files verified",
+            "details": []
+        },
+        {
+            "name": "Configuration",
+            "success": true,
+            "message": "Configuration files found",
+            "details": [
+                ".env",
+                "requirements.txt"
+            ]
+        },
+        {
+            "name": "Security Scan",
+            "success": false,
+            "message": "Potential secrets detected",
+            "details": [
+                "D:\\AI_BABA\\backend\\app\\modules\\iam\\api\\auth.py: contains password=",
+                "D:\\AI_BABA\\backend\\app\\modules\\iam\\services\\auth_service.py: contains password=",
+                "D:\\AI_BABA\\backend\\tools\\verifier\\analyzers.py: contains password=",
+                "D:\\AI_BABA\\backend\\tools\\verifier\\analyzers.py: contains secret=",
+                "D:\\AI_BABA\\backend\\tools\\verifier\\analyzers.py: contains api_key=",
+                "D:\\AI_BABA\\backend\\tools\\verifier\\analyzers.py: contains apikey="
+            ]
+        },
+        {
+            "name": "Dependencies",
+            "success": true,
+            "message": "53 dependencies registered",
+            "details": [
+                "fastapi",
+                "uvicorn[standard]",
+                "python-dotenv",
+                "pydantic",
+                "pydantic-settings",
+                "sqlalchemy",
+                "alembic",
+                "psycopg[binary]",
+                "asyncpg",
+                "python-jose[cryptography]",
+                "passlib[bcrypt]",
+                "bcrypt",
+                "python-multipart",
+                "cryptography",
+                "email-validator",
+                "celery",
+                "redis",
+                "openai",
+                "anthropic",
+                "google-generativeai",
+                "numpy",
+                "pandas",
+                "scikit-learn",
+                "torch",
+                "transformers",
+                "sentence-transformers",
+                "chromadb",
+                "faiss-cpu",
+                "pypdf",
+                "python-docx",
+                "openpyxl",
+                "beautifulsoup4",
+                "lxml",
+                "requests",
+                "httpx",
+                "aiohttp",
+                "feedparser",
+                "newspaper3k",
+                "pillow",
+                "opencv-python",
+                "moviepy",
+                "pydub",
+                "apscheduler",
+                "loguru",
+                "rich",
+                "pytest",
+                "pytest-asyncio",
+                "black",
+                "isort",
+                "flake8",
+                "gunicorn",
+                "orjson",
+                "python-dateutil"
+            ]
+        },
+        {
+            "name": "Architecture",
+            "success": true,
+            "message": "14 modules detected",
+            "details": [
+                "api",
+                "config",
+                "core",
+                "database",
+                "middleware",
+                "models",
+                "modules",
+                "repositories",
+                "schemas",
+                "security",
+                "services",
+                "shared",
+                "utils",
+                "__pycache__"
+            ]
+        }
+    ]
+}

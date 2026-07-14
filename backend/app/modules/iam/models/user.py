@@ -16,15 +16,15 @@ from sqlalchemy.orm import relationship
 
 from app.shared.models.base import BaseModel
 
-
 if TYPE_CHECKING:
-    from app.modules.iam.models.user_role import UserRole
+    from app.modules.audit.models.audit_log import AuditLog
     from app.modules.iam.models.role import Role
+    from app.modules.iam.models.user_role import UserRole
 
 
 class User(BaseModel):
     """
-    Enterprise User Entity
+    Enterprise User Entity.
     """
 
     __tablename__ = "users"
@@ -65,23 +65,25 @@ class User(BaseModel):
 
     is_active: Mapped[bool] = mapped_column(
         Boolean,
-        default=True,
         nullable=False,
+        default=True,
     )
 
     is_verified: Mapped[bool] = mapped_column(
         Boolean,
-        default=False,
         nullable=False,
+        default=False,
     )
 
     is_superuser: Mapped[bool] = mapped_column(
         Boolean,
-        default=False,
         nullable=False,
+        default=False,
     )
 
+    # -----------------------------
     # IAM Relationships
+    # -----------------------------
 
     user_roles: Mapped[list["UserRole"]] = relationship(
         back_populates="user",
@@ -91,6 +93,15 @@ class User(BaseModel):
     roles: Mapped[list["Role"]] = relationship(
         secondary="user_roles",
         viewonly=True,
+    )
+
+    # -----------------------------
+    # Audit Relationships
+    # -----------------------------
+
+    audit_logs: Mapped[list["AuditLog"]] = relationship(
+        back_populates="user",
+        passive_deletes=True,
     )
 
     def __repr__(self) -> str:
